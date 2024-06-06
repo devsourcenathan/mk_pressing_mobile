@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mk_pressing/screens/auth/auth_screen.dart';
-import 'package:mk_pressing/screens/auth/home_screen.dart';
-import 'package:mk_pressing/screens/main_screen.dart';
+import 'package:mk_pressing/ui/root_page.dart';
+import 'package:mk_pressing/ui/screens/signin_page.dart';
 
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
@@ -13,7 +12,8 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: activeSession == null ? AuthScreen() : MainScreen()),
+      body: Center(
+          child: activeSession == null ? const SignIn() : const RootPage()),
     );
   }
 }

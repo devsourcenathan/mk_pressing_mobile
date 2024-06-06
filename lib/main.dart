@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mk_pressing/screens/auth/auth_screen.dart';
-import 'package:mk_pressing/screens/auth/home_screen.dart';
 import 'package:mk_pressing/screens/auth/splash_screen.dart';
+import 'package:mk_pressing/ui/onboarding_screen.dart';
+import 'package:mk_pressing/ui/root_page.dart';
 import 'package:mk_pressing/utilities/config.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -34,8 +35,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const SplashScreen(),
-        '/auth': (context) => AuthScreen(),
-        '/home': (context) => HomeScreen(),
+        '/auth': (context) => const AuthScreen(),
+        '/home': (context) => const RootPage(),
       },
     );
   }
