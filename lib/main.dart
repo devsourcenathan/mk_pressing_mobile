@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:mk_pressing/screens/auth/auth_screen.dart';
+import 'package:mk_pressing/screens/auth/home_screen.dart';
 import 'package:mk_pressing/screens/auth/splash_screen.dart';
 import 'package:mk_pressing/utilities/config.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-const supabaseUrl = 'https://byjsyfvpgytjndwhypbx.supabase.co';
-// const supabaseKey = String.fromEnvironment('SUPABASE_KEY');
-const supabaseKey =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ5anN5ZnZwZ3l0am5kd2h5cGJ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY5ODM3MjQsImV4cCI6MjAzMjU1OTcyNH0.UuUjSnoLXObUiRz_EmS1lYcVf-D2F6KuoAoLdqIhzqc';
 Future<void> main() async {
+  await dotenv.load(fileName: ".env");
+
   await Supabase.initialize(
-    url: supabaseUrl,
-    anonKey: supabaseKey,
+    url: dotenv.env['SUPABASE_URL']!,
+    anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
   );
 
   runApp(const MyApp());
@@ -30,7 +31,12 @@ class MyApp extends StatelessWidget {
         primaryColor: primaryColor,
         primarySwatch: primaryColor,
       ),
-      home: const MySplashScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SplashScreen(),
+        '/auth': (context) => AuthScreen(),
+        '/home': (context) => HomeScreen(),
+      },
     );
   }
 }

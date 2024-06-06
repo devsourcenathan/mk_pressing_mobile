@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mk_pressing/screens/main_screen.dart';
 import 'package:mk_pressing/utilities/config.dart';
 
 class SignIn extends StatelessWidget {
@@ -61,20 +62,31 @@ class SignIn extends StatelessWidget {
               child: Column(
                 children: [
                   // for sign in button
-                  Container(
-                    width: size.width,
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    decoration: BoxDecoration(
-                      color: buttonColor,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        "Sign In",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 22,
+                  GestureDetector(
+                    onTap: () {
+                      //navigate to main_screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MainScreen(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: size.width,
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      decoration: BoxDecoration(
+                        color: buttonColor,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          "Sign In",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize: 22,
+                          ),
                         ),
                       ),
                     ),
@@ -105,11 +117,9 @@ class SignIn extends StatelessWidget {
                   ),
                   SizedBox(height: size.height * 0.06),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       socialIcon("images/google.png"),
-                      socialIcon("images/apple.png"),
-                      socialIcon("images/facebook.png"),
                     ],
                   ),
                   SizedBox(height: size.height * 0.07),
